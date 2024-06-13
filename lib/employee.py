@@ -187,4 +187,6 @@ class Employee:
 
     def reviews(self):
         """Return list of reviews associated with current employee"""
-        pass
+        from review import Review  # Import inside method to avoid circular imports
+        reviews = Review.get_reviews_by_employee_id(self.id)
+        return reviews if reviews else []
